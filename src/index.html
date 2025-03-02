@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="./css/output.css" rel="stylesheet">
+    <link href="./css/font.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="bg-[#F8FAF9]">
+    <nav class="w-full flex items-center justify-between px-20 py-6 bg-white">
+        <div class="flex items-center space-x-14">
+            <div class="flex items-center space-x-2">
+                <img src="assets/logo.svg" alt="" class="w-12 h-12">'
+                <h1 class="font-extrabold text-2xl">Obito</h1>
+            </div>
+            <ul class="flex items-center space-x-8 text-sm">
+                <li class="font-semibold"><a href="">Home</a></li>
+                <li><a href="">Pricing</a></li>
+                <li><a href="">Features</a></li>
+                <li><a href="">Testimonials</a></li>
+            </ul>
+        </div>
+        <div class="flex items-center space-x-4">
+            <img src="assets/device-message.svg" alt="" class="w-7 h-7w-7">
+            <div class="bg-grey w-[0.1rem] h-12"></div>
+            <div class="space-x-2">
+                <button class="text-sm font-semibold rounded-full bg-transparent border-[0.1rem] border-grey py-3 px-8">Sign Up</button>
+                <button class="text-sm font-semibold text-white rounded-full bg-main py-3 px-8">My Account</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="">
+        <section class="w-full flex items-center">
+            <div class="w-1/2 bg-white p-10 rounded-lg mx-10">
+                <div class="">
+                    <h1 class="font-bold text-xl">Upgrade Your Skill</h1>
+                    <form action="" class="space-y-4 mt-6">
+                        <div class="flex items-center space-x-4">
+                            <!-- Image Preview -->
+                            <div class="relative w-24 h-24 rounded-full border border-gray-300 overflow-hidden">
+                                <img id="imagePreview" class="w-full h-full object-cover hidden" alt="Uploaded Image">
+                                
+                                <!-- Input File -->
+                                <input type="file" id="imageInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*">
+                                
+                                <!-- Default Text -->
+                                <div id="addPhotoText" class="flex justify-center items-center w-full h-full text-sm font-semibold text-center">
+                                    Add Photo
+                                </div>
+                            </div>
+                
+                            <!-- Delete Photo Button -->
+                            <button id="deletePhoto" class="hidden bg-red-100 text-red-600 font-semibold px-4 py-2 rounded-full">
+                                DELETE PHOTO
+                            </button>
+                        </div>
+                
+                        <div class="space-y-2">
+                            <label for="name" class="text-sm">Complete Name</label>
+                            <div class="flex items-center w-full h-10 rounded-full p-5 border-[0.1rem] border-grey space-x-2 focus-within:border-main">
+                                <img src="assets/profile.svg" alt="" class="w-5 h-5">
+                                <input type="text" id="name" placeholder="Type your Complete Name" autocomplete="off" required class="text-sm placeholder:text-sm placeholder:font-normal outline-none w-full font-semibold">
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <label for="job" class="text-sm">Occupation</label>
+                            <div class="flex items-center w-full h-10 rounded-full p-5 border-[0.1rem] border-gray-300 space-x-2 focus-within:border-main">
+                                <img src="assets/job.svg" alt="" class="w-5 h-5">
+                                <select name="job" id="job" class="text-sm placeholder:text-sm outline-none w-full bg-transparent font-semibold">
+                                    <option value="programmer" class="text-sm">Programmer</option>
+                                    <option value="uiuxdesigner" class="text-sm">UI/UX Designer</option>
+                                    <option value="other" class="text-sm">Other</option>
+                                </select>
+                            </div>
+                        </div>  
+                        
+                        <div class="space-y-2">
+                            <label for="email" class="text-sm">Email Address</label>
+                            <div class="flex items-center w-full h-10 rounded-full p-5 border-[0.1rem] border-grey space-x-2 focus-within:border-main">
+                                <img src="assets/email.svg" alt="" class="w-5 h-5">
+                                <input type="email" id="email" placeholder="Type your valid Email Address" autocomplete="off" required class="text-sm placeholder:text-sm placeholder:font-normal outline-none w-full font-semibold">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="password" class="text-sm">Password</label>
+                            <div class="flex items-center w-full h-10 rounded-full p-5 border-[0.1rem] border-grey space-x-2 focus-within:border-main">
+                                <img src="assets/password.svg" alt="" class="w-5 h-5">
+                                <input type="password" id="password" placeholder="Type your valid Password" autocomplete="off" required class="text-sm placeholder:text-sm placeholder:font-normal outline-none w-full font-semibold">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="password" class="text-sm">Confirm Password</label>
+                            <div class="flex items-center w-full h-10 rounded-full p-5 border-[0.1rem] border-grey space-x-2 focus-within:border-main">
+                                <img src="assets/password.svg" alt="" class="w-5 h-5">
+                                <input type="password" id="password" placeholder="Type your valid Password" autocomplete="off" required class="text-sm placeholder:text-sm placeholder:font-normal outline-none w-full font-semibold">
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="text-sm font-semibold w-full h-12 bg-main text-white rounded-full">Create My Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="banner" class="w-1/2">
+                <img src="assets/banner.png" alt="" class="w-full">
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const imageInput = document.getElementById("imageInput");
+        const imagePreview = document.getElementById("imagePreview");
+        const addPhotoText = document.getElementById("addPhotoText");
+        const deletePhoto = document.getElementById("deletePhoto");
+
+        // Input file change event
+        imageInput.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.classList.remove("hidden");
+                    addPhotoText.classList.add("hidden");
+                    deletePhoto.classList.remove("hidden");
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Delete photo event
+        deletePhoto.addEventListener("click", function () {
+            imagePreview.src = "";
+            imagePreview.classList.add("hidden");
+            addPhotoText.classList.remove("hidden");
+            deletePhoto.classList.add("hidden");
+
+            // Reset file input
+            imageInput.value = "";
+        });
+    });
+</script>
+</html>

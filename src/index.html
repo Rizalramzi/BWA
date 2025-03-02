@@ -7,12 +7,14 @@
     <link href="./css/output.css" rel="stylesheet">
     <link href="./css/font.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <script src="./js/script.js"></script>
+    <script src="./js/floatingMenu.js"></script>
 </head>
 <body class="bg-[#F8FAF9]">
-    <nav class="w-full flex items-center justify-between px-4 lg:px-20 py-6 bg-white">
+    <nav class="w-full flex items-center justify-between px-10 lg:px-20 py-6 bg-white relative">
         <div class="flex items-center space-x-14">
             <div class="flex items-center space-x-2">
-                <img src="assets/logo.svg" alt="" class="w-12 h-12">'
+                <img src="assets/logo.svg" alt="" class="w-12 h-12">
                 <h1 class="font-extrabold text-2xl">Obito</h1>
             </div>
             <ul class="hidden lg:flex items-center space-x-8 text-sm">
@@ -23,11 +25,24 @@
             </ul>
         </div>
         <div class="hidden lg:flex items-center space-x-4">
-            <img src="assets/device-message.svg" alt="" class="w-7 h-7w-7">
+            <img src="assets/device-message.svg" alt="" class="w-7 h-7">
             <div class="bg-grey w-[0.1rem] h-12"></div>
             <div class="space-x-2">
                 <button class="text-sm font-semibold rounded-full bg-transparent border-[0.1rem] border-grey py-3 px-8">Sign Up</button>
                 <button class="text-sm font-semibold text-white rounded-full bg-main py-3 px-8">My Account</button>
+            </div>
+        </div>
+        <div class="lg:hidden block">
+            <img id="hamburger" src="assets/hamburger.svg" alt="" class="w-8 h-8 cursor-pointer">
+        </div>
+        
+        <div id="floatingMenu" class="fixed z-50 top-0 right-0 w-64 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="p-6 flex flex-col space-y-4">
+                <button id="closeMenu" class="pe-5 self-end text-5xl">&times;</button>
+                <a href="" class="text-lg font-semibold">Home</a>
+                <a href="" class="text-lg">Pricing</a>
+                <a href="" class="text-lg">Features</a>
+                <a href="" class="text-lg">Testimonials</a>
             </div>
         </div>
     </nav>
@@ -39,22 +54,19 @@
                     <h1 class="font-bold text-xl">Upgrade Your Skill</h1>
                     <form action="" class="space-y-4 mt-6">
                         <div class="flex items-center space-x-4">
-                            <!-- Image Preview -->
+
                             <div class="relative w-24 h-24 rounded-full border border-gray-300 overflow-hidden">
                                 <img id="imagePreview" class="w-full h-full object-cover hidden" alt="Uploaded Image">
                                 
-                                <!-- Input File -->
                                 <input type="file" id="imageInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*">
                                 
-                                <!-- Default Text -->
                                 <div id="addPhotoText" class="flex justify-center items-center w-full h-full text-sm font-semibold text-center">
                                     Add Photo
                                 </div>
                             </div>
                 
-                            <!-- Delete Photo Button -->
                             <button id="deletePhoto" class="hidden bg-red-100 text-red-600 font-semibold px-4 py-2 rounded-full">
-                                DELETE PHOTO
+                                Delete Photo
                             </button>
                         </div>
                 
@@ -116,59 +128,4 @@
         
     </main>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const imageInput = document.getElementById("imageInput");
-        const imagePreview = document.getElementById("imagePreview");
-        const addPhotoText = document.getElementById("addPhotoText");
-        const deletePhoto = document.getElementById("deletePhoto");
-    
-        const registerForm = document.querySelector("form"); // Perbaiki selector form
-        const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirmPassword");
-        const passwordError = document.getElementById("passwordError");
-    
-        // Upload Image
-        imageInput.addEventListener("change", function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.classList.remove("hidden");
-                    addPhotoText.classList.add("hidden");
-                    deletePhoto.classList.remove("hidden");
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    
-        // Delete Photo
-        deletePhoto.addEventListener("click", function () {
-            imagePreview.src = "";
-            imagePreview.classList.add("hidden");
-            addPhotoText.classList.remove("hidden");
-            deletePhoto.classList.add("hidden");
-            imageInput.value = "";
-        });
-    
-        // Validate Confirm Password
-        registerForm.addEventListener("submit", function (event) {
-            if (password.value !== confirmPassword.value) {
-                passwordError.classList.remove("hidden");
-                event.preventDefault(); // Mencegah form terkirim jika password tidak cocok
-            } else {
-                passwordError.classList.add("hidden");
-            }
-        });
-    
-        // Hilangkan error saat user mengetik ulang password
-        confirmPassword.addEventListener("input", function () {
-            if (password.value === confirmPassword.value) {
-                passwordError.classList.add("hidden");
-            }
-        });
-    });
-    
-</script>
 </html>

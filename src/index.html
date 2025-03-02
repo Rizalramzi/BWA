@@ -95,12 +95,13 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label for="password" class="text-sm">Confirm Password</label>
+                            <label for="confirmPassword" class="text-sm">Confirm Password</label>
                             <div class="flex items-center w-full h-10 rounded-full p-5 border-[0.1rem] border-grey space-x-2 focus-within:border-main">
                                 <img src="assets/password.svg" alt="" class="w-5 h-5">
-                                <input type="password" id="password" placeholder="Type your valid Password" autocomplete="off" required class="text-sm placeholder:text-sm placeholder:font-normal outline-none w-full font-semibold">
+                                <input type="password" id="confirmPassword" placeholder="Re-enter your Password" autocomplete="off" required class="text-sm placeholder:text-sm placeholder:font-normal outline-none w-full font-semibold">
                             </div>
-                        </div>
+                            <p id="passwordError" class="text-red-500 hidden text-sm">Password tidak cocok!</p>
+                        </div>                        
 
                         <div>
                             <button type="submit" class="text-sm font-semibold w-full h-12 bg-main text-white rounded-full">Create My Account</button>
@@ -121,8 +122,13 @@
         const imagePreview = document.getElementById("imagePreview");
         const addPhotoText = document.getElementById("addPhotoText");
         const deletePhoto = document.getElementById("deletePhoto");
-
-        // Input file change event
+    
+        const registerForm = document.querySelector("form"); // Perbaiki selector form
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const passwordError = document.getElementById("passwordError");
+    
+        // Upload Image
         imageInput.addEventListener("change", function (event) {
             const file = event.target.files[0];
             if (file) {
@@ -136,17 +142,33 @@
                 reader.readAsDataURL(file);
             }
         });
-
-        // Delete photo event
+    
+        // Delete Photo
         deletePhoto.addEventListener("click", function () {
             imagePreview.src = "";
             imagePreview.classList.add("hidden");
             addPhotoText.classList.remove("hidden");
             deletePhoto.classList.add("hidden");
-
-            // Reset file input
             imageInput.value = "";
         });
+    
+        // Validate Confirm Password
+        registerForm.addEventListener("submit", function (event) {
+            if (password.value !== confirmPassword.value) {
+                passwordError.classList.remove("hidden");
+                event.preventDefault(); // Mencegah form terkirim jika password tidak cocok
+            } else {
+                passwordError.classList.add("hidden");
+            }
+        });
+    
+        // Hilangkan error saat user mengetik ulang password
+        confirmPassword.addEventListener("input", function () {
+            if (password.value === confirmPassword.value) {
+                passwordError.classList.add("hidden");
+            }
+        });
     });
+    
 </script>
 </html>
